@@ -1,11 +1,21 @@
-FROM alpine:3.17
+FROM node:latest
 
-RUN apk update
-RUN apk add --no-cache tini && \
-    rm -f /var/cache/apk/*
+RUN mkdir /clams-remote
 
-ARG ARCH
-ADD ./hello-world/target/${ARCH}-unknown-linux-musl/release/hello-world /usr/local/bin/hello-world
-RUN chmod +x /usr/local/bin/hello-world
+# COPY the clams-app into the container for build.
+ADD clams-remote /clams-remote
+
+WORKDIR /app
+# build the project.
+#RUN yarn build
+ENV HOST=0.0.0.0
+ENV PORT 5173
+
+# install dependencies
+RUN yarn
+
+#RUN chmod +x /usr/local/bin/clams-remote
 ADD ./docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 RUN chmod a+x /usr/local/bin/docker_entrypoint.sh
+
+ENTRYPOINT [ docker_entrypoint.sh ]

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec tini hello-world
+exec tini yarn dev --host 0.0.0.0
