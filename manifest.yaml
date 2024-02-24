@@ -91,7 +91,7 @@ interfaces:
     lan-config:
       443:
         ssl: true
-        internal: 80
+        internal: 5173
     # Denotes if the service has a user interface to display
     ui: true
     # Denotes the protocol specifications used by this interface
