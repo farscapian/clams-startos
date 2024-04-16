@@ -1,0 +1,3 @@
+[submodule "clams-remote"]
+	path = clams-remote
+	url = https://github.com/clams-tech/Remote
