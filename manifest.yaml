@@ -100,7 +100,7 @@ interfaces:
       - http
 dependencies:
   c-lightning:
-    version: ">=23.11.2"
+    version: ">=24.02.2"
     requirement:
       type: required
     description: Core Lightning must be running for Clams Remote to connect to it.
