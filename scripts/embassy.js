@@ -4163,7 +4163,7 @@ const setConfig1 = mod4.setConfig;
 const { shape: shape1, number: number1, boolean: __boolean1, string: string2 } = mod;
 const matchLightningdConfig = shape1({
     advanced: shape1({
-        clams_remote_websocket: __boolean1
+        "clams-remote-websocket": __boolean1
     })
 });
 const dependencies = {
@@ -4176,7 +4176,7 @@ const dependencies = {
                     error: "lightningd config is not the correct shape"
                 };
             }
-            if (!config.advanced.clams_remote_websocket) {
+            if (!config.advanced["clams-remote-websocket"]) {
                 return {
                     error: "Must have the Clams Remote websocket interface enabled."
                 };
@@ -4188,7 +4188,7 @@ const dependencies = {
         async autoConfigure (effects, configInput) {
             effects.info("Autoconfigure Core Lightning to support Clams Remote.");
             const config = matchLightningdConfig.unsafeCast(configInput);
-            config.advanced.clams_remote_websocket = true;
+            config.advanced["clams-remote-websocket"] = true;
             return {
                 result: config
             };
